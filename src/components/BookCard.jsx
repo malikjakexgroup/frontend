@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useFavorites } from "../hooks/useFavorites";
+import { authorLine } from "../lib/books";
 import BookCover from "./BookCover";
 import Stars from "./Stars";
 
@@ -33,7 +34,7 @@ export default function BookCard({ book }) {
           {book.title || "Untitled"}
         </Link>
         <p className="mt-0.5 line-clamp-1 text-sm text-stone-500">
-          {(book.authors || []).join(", ") || "Unknown author"}
+          {authorLine(book)}
         </p>
         <div className="mt-auto pt-2">
           <Stars rating={book.rating} />

@@ -1,7 +1,9 @@
+import { starCount } from "../lib/books";
+
 export default function Stars({ rating }) {
   const value = Number(rating);
   if (!value) return <span className="text-xs text-stone-400">No rating</span>;
-  const full = Math.round(value);
+  const full = starCount(rating);
   return (
     <span className="inline-flex items-center gap-1 text-amber-500" title={`${value} / 5`}>
       <span aria-hidden="true">
