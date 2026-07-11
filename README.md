@@ -7,6 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-18-61dafb.svg)](package.json)
 
+📐 **[Architecture &amp; diagrams →](ARCHITECTURE.md)**
+
 React (Vite) frontend. Calls **only** the WordPress backend REST API
 (`/wp-json/books/v1/*`) — never Google directly.
 
