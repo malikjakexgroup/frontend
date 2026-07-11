@@ -1,9 +1,9 @@
-# book-web
+# frontend — React
 
-> 🧩 Part of the **[Book Platform](https://github.com/malikjakexgroup/book-platform)** — a multi-repo book discovery app.
-> Repos: [book-backend](https://github.com/malikjakexgroup/book-backend) · **book-web** · [book-docs](https://github.com/malikjakexgroup/book-docs)
+> ⚛️ The **frontend** of the Book Platform. Calls the **[backend](https://github.com/malikjakexgroup/backend)** API — never Google directly.
+> Repos: **frontend** · [backend](https://github.com/malikjakexgroup/backend) · [api](https://github.com/malikjakexgroup/api)
 
-[![CI](https://github.com/malikjakexgroup/book-web/actions/workflows/ci.yml/badge.svg)](https://github.com/malikjakexgroup/book-web/actions/workflows/ci.yml)
+[![CI](https://github.com/malikjakexgroup/frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/malikjakexgroup/frontend/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-18-61dafb.svg)](package.json)
 
