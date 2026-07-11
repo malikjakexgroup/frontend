@@ -1,5 +1,8 @@
 # book-web
 
+> 🧩 Part of the **[Book Platform](https://github.com/malikjakexgroup/book-platform)** — a multi-repo book discovery app.
+> Repos: [book-backend](https://github.com/malikjakexgroup/book-backend) · **book-web** · [book-docs](https://github.com/malikjakexgroup/book-docs)
+
 React (Vite) frontend. Calls **only** the WordPress backend REST API
 (`/wp-json/books/v1/*`) — never Google directly.
 
