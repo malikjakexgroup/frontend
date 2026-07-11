@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+body {
+  background-color: #faf8f4;
+  color: #292524;
+}
+
+/* subtle paper texture via a soft radial wash */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #fdf6ec 0%, transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, #f6efe4 0%, transparent 55%);
+}
