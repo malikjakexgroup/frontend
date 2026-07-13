@@ -1,16 +1,16 @@
-import { starCount } from "../lib/books";
-
 export default function Stars({ rating }) {
   const value = Number(rating);
-  if (!value) return <span className="text-xs text-stone-400">No rating</span>;
-  const full = starCount(rating);
+  if (!value) {
+    return <span className="text-[10px] uppercase tracking-[0.18em] text-faint">Unrated</span>;
+  }
+  const full = Math.round(value);
   return (
-    <span className="inline-flex items-center gap-1 text-amber-500" title={`${value} / 5`}>
-      <span aria-hidden="true">
+    <span className="inline-flex items-center gap-1.5" title={`${value} / 5`}>
+      <span className="text-xs tracking-[0.15em] text-gold" aria-hidden="true">
         {"★".repeat(full)}
-        <span className="text-stone-300">{"★".repeat(5 - full)}</span>
+        <span className="text-faint">{"★".repeat(5 - full)}</span>
       </span>
-      <span className="text-xs font-medium text-stone-500">{value.toFixed(1)}</span>
+      <span className="text-[11px] tabular-nums text-muted">{value.toFixed(1)}</span>
     </span>
   );
 }

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 const inputClass =
-  "w-full rounded-lg border border-stone-300 px-3 py-2.5 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-200";
+  "w-full border-b border-line bg-transparent py-3 text-ink outline-none transition-colors placeholder:text-faint focus:border-gold";
 
 export default function Signup() {
   const { register } = useAuth();
@@ -29,11 +29,13 @@ export default function Signup() {
   }
 
   return (
-    <div className="mx-auto mt-6 max-w-sm rounded-2xl border border-stone-200 bg-white p-7 shadow-sm">
-      <h1 className="font-serif text-2xl font-bold text-stone-800">Create your account</h1>
-      <p className="mt-1 text-sm text-stone-500">Join Booknest to save books you love.</p>
-      <form onSubmit={submit} className="mt-5 space-y-3">
-        {error && <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700">{error}</p>}
+    <div className="mx-auto max-w-sm pt-10">
+      <p className="text-[11px] uppercase tracking-[0.32em] text-gold">Join Booknest</p>
+      <h1 className="mt-4 font-display text-4xl font-light tracking-tight">Create account</h1>
+      <form onSubmit={submit} className="mt-8 space-y-6">
+        {error && (
+          <p className="border-l-2 border-rose/60 pl-3 text-sm text-rose">{error}</p>
+        )}
         <input placeholder="Name" value={name}
           onChange={(e) => setName(e.target.value)} className={inputClass} />
         <input type="email" required placeholder="Email" value={email}
@@ -41,12 +43,13 @@ export default function Signup() {
         <input type="password" required minLength={6} placeholder="Password (6+ characters)" value={password}
           onChange={(e) => setPassword(e.target.value)} className={inputClass} />
         <button disabled={busy}
-          className="w-full rounded-lg bg-amber-800 py-2.5 font-medium text-white transition hover:bg-amber-900 disabled:opacity-50">
+          className="w-full rounded-full bg-gold py-3 text-xs uppercase tracking-[0.2em] text-black hover:bg-[#d8b673] hover:shadow-[0_0_30px_-8px_rgba(198,161,91,0.6)] disabled:opacity-50">
           {busy ? "…" : "Create account"}
         </button>
       </form>
-      <p className="mt-4 text-center text-sm text-stone-500">
-        Already have an account? <Link to="/login" className="font-medium text-amber-800 hover:underline">Log in</Link>
+      <p className="mt-8 text-center text-sm text-muted">
+        Already a member?{" "}
+        <Link to="/login" className="text-gold hover:underline">Log in</Link>
       </p>
     </div>
   );

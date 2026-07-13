@@ -10,3 +10,15 @@ export function starCount(rating) {
   const value = Number(rating) || 0;
   return Math.max(0, Math.min(5, Math.round(value)));
 }
+
+/**
+ * A sharper cover URL. Google's default `zoom=1` thumbnails are ~128px (blurry when
+ * enlarged); `zoom=0` returns a much larger image. We also drop the fake page-curl.
+ */
+export function coverUrl(url) {
+  if (!url) return null;
+  return url
+    .replace(/^http:\/\//, "https://")
+    .replace(/&edge=curl/g, "")
+    .replace(/([?&])zoom=\d+/g, "$1zoom=0");
+}

@@ -1,9 +1,11 @@
-// Book cover with a nice fallback when there's no thumbnail (common until Google covers load).
+import { coverUrl } from "../lib/books";
+
+// Cover with a refined dark fallback when there's no thumbnail.
 export default function BookCover({ book, className = "" }) {
   if (book.thumbnail) {
     return (
       <img
-        src={book.thumbnail}
+        src={coverUrl(book.thumbnail)}
         alt={book.title || "cover"}
         loading="lazy"
         className={`h-full w-full object-cover ${className}`}
@@ -11,13 +13,12 @@ export default function BookCover({ book, className = "" }) {
     );
   }
   return (
-    <div
-      className={`flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-amber-100 to-amber-50 p-3 text-center ${className}`}
-    >
-      <span className="mb-1 text-2xl opacity-60">📖</span>
-      <span className="line-clamp-3 font-serif text-sm font-medium leading-tight text-amber-900/80">
-        {book.title || "Untitled"}
-      </span>
+    <div className="flex h-full w-full items-center justify-center bg-surface2 p-5">
+      <div className="flex h-full w-full items-center justify-center border border-gold-dim/30 p-3">
+        <span className="font-display text-sm leading-snug text-gold-dim line-clamp-4 text-center">
+          {book.title || "Untitled"}
+        </span>
+      </div>
     </div>
   );
 }

@@ -9,34 +9,40 @@ export default function BookCard({ book }) {
   const fav = isFavorite(book.google_id);
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
-      <Link to={`/book/${book.google_id}`} className="relative block aspect-[3/4] overflow-hidden bg-stone-100">
-        <BookCover book={book} className="transition duration-300 group-hover:scale-105" />
+    <div className="group transition-transform duration-500 ease-out will-change-transform hover:-translate-y-1.5">
+      <Link
+        to={`/book/${book.google_id}`}
+        className="relative block aspect-[2/3] overflow-hidden rounded-[2px] bg-surface ring-1 ring-line transition duration-300 group-hover:ring-gold/45 group-hover:shadow-[0_24px_60px_-20px_rgba(198,161,91,0.45)]"
+      >
+        <BookCover book={book} className="transition duration-700 ease-out group-hover:scale-[1.04]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         <button
           onClick={(e) => {
             e.preventDefault();
             toggle(book);
           }}
           aria-label={fav ? "Remove favorite" : "Add favorite"}
-          className={`absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full text-lg shadow-sm backdrop-blur transition ${
-            fav ? "bg-white text-rose-500" : "bg-white/80 text-stone-400 hover:text-rose-500"
+          className={`absolute right-2.5 top-2.5 flex h-8 w-8 items-center justify-center rounded-full border backdrop-blur transition ${
+            fav
+              ? "border-rose/40 bg-black/50 text-rose"
+              : "border-white/10 bg-black/40 text-white/60 opacity-0 hover:text-rose group-hover:opacity-100"
           }`}
         >
           {fav ? "♥" : "♡"}
         </button>
       </Link>
 
-      <div className="flex flex-1 flex-col p-3">
+      <div className="mt-3.5">
         <Link
           to={`/book/${book.google_id}`}
-          className="font-serif font-semibold leading-snug text-stone-800 line-clamp-2 hover:text-amber-800"
+          className="block font-display text-[15px] leading-snug text-ink transition-colors line-clamp-2 group-hover:text-gold"
         >
           {book.title || "Untitled"}
         </Link>
-        <p className="mt-0.5 line-clamp-1 text-sm text-stone-500">
+        <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-muted line-clamp-1">
           {authorLine(book)}
         </p>
-        <div className="mt-auto pt-2">
+        <div className="mt-2">
           <Stars rating={book.rating} />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { loginUser, registerUser, fetchMe } from "../services/api";
+import { loginUser, registerUser, fetchMe, resetPassword } from "../services/api";
 
 const AuthContext = createContext(null);
 
@@ -27,13 +27,14 @@ export function AuthProvider({ children }) {
 
   const login = (email, password) => apply(loginUser({ email, password }));
   const register = (name, email, password) => apply(registerUser({ name, email, password }));
+  const reset = (email, otp, password) => apply(resetPassword(email, otp, password));
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, ready, login, register, logout }}>
+    <AuthContext.Provider value={{ user, ready, login, register, reset, logout }}>
       {children}
     </AuthContext.Provider>
   );

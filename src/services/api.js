@@ -22,3 +22,10 @@ export const getBook = (id) => req(`/book/${encodeURIComponent(id)}`);
 export const registerUser = (body) => req("/register", { method: "POST", body: JSON.stringify(body) });
 export const loginUser = (body) => req("/login", { method: "POST", body: JSON.stringify(body) });
 export const fetchMe = () => req("/me");
+
+export const forgotPassword = (email) =>
+  req("/forgot-password", { method: "POST", body: JSON.stringify({ email }) });
+export const verifyOtp = (email, otp) =>
+  req("/verify-otp", { method: "POST", body: JSON.stringify({ email, otp }) });
+export const resetPassword = (email, otp, password) =>
+  req("/reset-password", { method: "POST", body: JSON.stringify({ email, otp, password }) });

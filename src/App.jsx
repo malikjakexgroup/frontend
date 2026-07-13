@@ -7,42 +7,42 @@ import Signup from "./pages/Signup";
 import { useAuth } from "./hooks/useAuth";
 
 const navClass = ({ isActive }) =>
-  `transition ${isActive ? "text-amber-800 font-semibold" : "text-stone-500 hover:text-stone-800"}`;
+  `text-[11px] uppercase tracking-[0.22em] transition-colors ${
+    isActive ? "text-gold" : "text-muted hover:text-ink"
+  }`;
 
 export default function App() {
   const { user, logout } = useAuth();
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-20 border-b border-stone-200/70 bg-[#faf8f4]/85 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center gap-6 px-4 py-3">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl">📖</span>
-            <span className="font-serif text-xl font-bold tracking-tight text-amber-900">Booknest</span>
+      <header className="sticky top-0 z-20 border-b border-line bg-bg/70 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-5xl items-center gap-8 px-6 py-4">
+          <Link to="/" className="font-display text-2xl tracking-tight">
+            Book<span className="text-gold">nest</span>
           </Link>
-          <nav className="hidden gap-5 text-sm font-medium sm:flex">
+          <nav className="hidden gap-7 sm:flex">
             <NavLink to="/" end className={navClass}>Discover</NavLink>
             <NavLink to="/favorites" className={navClass}>Favorites</NavLink>
           </nav>
-          <div className="ml-auto flex items-center gap-3 text-sm">
+          <div className="ml-auto flex items-center gap-5 text-[11px] uppercase tracking-[0.18em]">
             {user ? (
               <>
-                <span className="hidden text-stone-500 sm:inline">
-                  Hi, <span className="font-medium text-stone-700">{user.name || user.email}</span>
+                <span className="hidden text-muted sm:inline">
+                  {user.name || user.email}
                 </span>
-                <button
-                  onClick={logout}
-                  className="rounded-full border border-stone-300 px-3 py-1 text-stone-600 transition hover:bg-stone-100"
-                >
+                <button onClick={logout} className="text-muted transition-colors hover:text-ink">
                   Log out
                 </button>
               </>
             ) : (
               <>
-                <NavLink to="/login" className="text-stone-600 hover:text-stone-900">Log in</NavLink>
+                <NavLink to="/login" className="text-muted transition-colors hover:text-ink">
+                  Log in
+                </NavLink>
                 <NavLink
                   to="/signup"
-                  className="rounded-full bg-amber-800 px-4 py-1.5 font-medium text-white shadow-sm transition hover:bg-amber-900"
+                  className="rounded-full border border-gold/40 px-4 py-1.5 text-gold hover:bg-gold hover:text-black hover:shadow-[0_0_26px_-6px_rgba(198,161,91,0.6)]"
                 >
                   Sign up
                 </NavLink>
@@ -52,7 +52,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
+      <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-12">
         <Routes>
           <Route path="/" element={<Search />} />
           <Route path="/book/:id" element={<BookDetails />} />
@@ -62,8 +62,13 @@ export default function App() {
         </Routes>
       </main>
 
-      <footer className="border-t border-stone-200/70 py-6 text-center text-xs text-stone-400">
-        Booknest · Powered by <span className="font-medium text-stone-500">WordPress</span>
+      <footer className="mt-16 border-t border-line py-10 text-center">
+        <p className="font-display text-lg">
+          Book<span className="text-gold">nest</span>
+        </p>
+        <p className="mt-1.5 text-[10px] uppercase tracking-[0.28em] text-faint">
+          A quiet place for books
+        </p>
       </footer>
     </div>
   );
